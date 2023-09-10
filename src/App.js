@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+import "./App.css";
+import config from "./chatbot/config";
+import ChatBot from "react-chatbot-kit";
+import MessageParser from "./chatbot/messageParser";
+import ActionProvider from "./chatbot/acionProvider";
+import 'react-chatbot-kit/build/main.css';
+import Page1 from "./chatbot/componants/Page_1";
+
 
 function App() {
+
+  const [enrolled, setEnrolled] = useState(false);
+
+  const handleEnrollClick = () => {
+    setEnrolled(true);
+  };
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      {!enrolled ? (
+        <Page1 onClickEnroll={handleEnrollClick} />
+      ) : (
+        <div className="chatbot">
+          <ChatBot
+            config={config}
+            messageParser={MessageParser}
+            actionProvider={ActionProvider}
+          />
+        </div>
+      )}
+    </React.Fragment>
   );
 }
+
+
 
 export default App;

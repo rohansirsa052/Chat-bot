@@ -1,0 +1,25 @@
+.container{
+   
+    padding: 1rem;
+    margin: 0.5rem;
+}
+.morining{
+    margin-bottom: 2rem;
+}
+.buttonContainer{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn{
+    width: 100%;
+    height: 40px;
+
+    border: 0px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+        &:hover{
+        background-color: aqua;
+    }
+}
